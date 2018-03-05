@@ -15,7 +15,9 @@ function LookUpBranches($issue) {
 }
 
 function CreateBranch($issue) {
-    "Creting a Branch for issue $issue"
+    "Creating a Branch for issue $issue"
+    $message = Read-Host("Branch Name: ")
+    git checkout -b "$message_$issue"
 }
 
 function RemoveBranches($issue) {
@@ -36,8 +38,10 @@ function SelectBranch($issue) {
         0 { Write-Host "No branches with issue $issue"; exit }
         1 { $selected_branch = $branches[0]}
         default {
+            $counter = 0
             foreach ($item in $branches) {
-               Write-Host($item.count + " $item")
+                $counter++
+                Write-Host("$counter $item")
                 $selected_branch = $branches[0]
             }
         }
